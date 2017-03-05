@@ -32,7 +32,7 @@ public class PersonColourSpread : MonoBehaviour {
             for(int i = 0; i < inRadius.Count; i++)
             {
                 PersonColourControl person = inRadius[i];
-                person.blue += thisColours.blue * changepower;
+                person.green += thisColours.green * changepower;
                 person.red += thisColours.red * changepower;
             }
 

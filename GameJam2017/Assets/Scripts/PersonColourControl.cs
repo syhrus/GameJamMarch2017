@@ -5,12 +5,12 @@ using UnityEngine;
 public class PersonColourControl : MonoBehaviour {
 
     //Inner Colours
-    public float blue = 0;
+    public float green = 0;
     public float red = 0;
     private float grey = 0.5f;
 
     //Border Colours
-    public float borderBlue = 0; 
+    public float borderGreen = 0; 
     public float borderRed = 0;
 
     private SpriteRenderer border; //Border Sprite of person
@@ -23,28 +23,38 @@ public class PersonColourControl : MonoBehaviour {
     }
 	
 	void Update () {
+        //Border initially removes all other colour's power
+        if(borderGreen > 0)
+        {
+            red = 0;
+        }
+        if (borderRed > 0)
+        {
+            green = 0;
+        }
+
         //clamp colour values so they don't get too large - This also adds a little bit of a decay factor, so that's nice.
-        while (red + blue > 1)
+        while (red + green > 1)
         {
             red /= 2;
-            blue /= 2;
+            green /= 2;
         }
-        grey = 0.5f - red - blue;
+        grey = 0.5f - red/2 - green/2;
 
-        borderBlue = Mathf.Clamp01(borderBlue);
+        borderGreen = Mathf.Clamp01(borderGreen);
         borderRed = Mathf.Clamp01(borderRed);
 
         //set inner colour 
         inner.color = new Color(
-               grey + red,
-               grey,
-               grey + blue
+               Mathf.Clamp01(grey + red),
+               Mathf.Clamp01(grey + green),
+               grey
                );
         //set border colour 
         border.color = new Color(
-               0.0f + (borderRed),
-               0.0f,
-               0.0f + (borderBlue)
+               borderRed,
+               borderGreen,
+               0.0f
                );
     }
 }
