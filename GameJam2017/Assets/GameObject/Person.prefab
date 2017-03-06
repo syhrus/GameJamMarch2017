@@ -56,7 +56,6 @@ GameObject:
   - component: {fileID: 58754279871775410}
   - component: {fileID: 50870906098435248}
   - component: {fileID: 114279788821512122}
-  - component: {fileID: 114133267697239560}
   - component: {fileID: 114288968287082432}
   m_Layer: 0
   m_Name: Person
@@ -140,21 +139,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.73
---- !u!114 &114133267697239560
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1756434950560722}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93a4ff022b0bfca4ab14beb01c8a0363, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  green: 0
-  red: 0
-  borderGreen: 0
-  borderRed: 0
 --- !u!114 &114178416418624476
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,8 +191,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vocalRadius: 3
-  changepower: 0.05
-  changeRate: 1
+  changepower: 0.01
+  changeRate: 0.1
 --- !u!212 &212520855134599028
 SpriteRenderer:
   m_ObjectHideFlags: 1
