@@ -35,6 +35,13 @@ public class PersonColourSpread : MonoBehaviour {
                 person.green += thisColours.green * changepower;
                 person.red += thisColours.red * changepower;
             }
+			float difference = Mathf.Abs (thisColours.green - thisColours.red);
+			if (thisColours.green > 0.05f && thisColours.red > 0.05f && difference < 0.2f) {
+				//Add more decay when in a middle-ground area
+				Debug.Log (difference);
+				thisColours.green *= difference;
+				thisColours.red *= difference;
+			}
 
             yield return new WaitForSeconds(changeRate);
             inRadius.Clear();
