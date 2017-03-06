@@ -4,8 +4,9 @@ using UnityEngine;
 
 public class PersonMovement : MonoBehaviour {
 
-	public float maxSpeed = 10; //adjustable speed
+	public float maxSpeed = 5; //adjustable speed
 	public Vector2 dir;
+	private Vector2 force;
 	private Rigidbody2D me;
 
 	// Use this for initialization
@@ -16,6 +17,11 @@ public class PersonMovement : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		me.AddForce(dir);
+		force = Vector2.ClampMagnitude (dir, maxSpeed);
+
+	}
+
+	void FixedUpdate(){
+		me.AddForce (force);
 	}
 }

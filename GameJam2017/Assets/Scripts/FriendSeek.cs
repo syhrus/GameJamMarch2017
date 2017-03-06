@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FriendSeek : MonoBehaviour {
 
-	public float vocalRadius = 0;
+	public float seekRadius = 0;
 	private List<PersonColourControl> inRadius;
 	private Rigidbody2D me;
 	private PersonMovement personMoving;
@@ -19,7 +19,7 @@ public class FriendSeek : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//Finds all colliders in a radius and adds them to list
-		foreach( Collider2D p in Physics2D.OverlapCircleAll(transform.position, vocalRadius))
+		foreach( Collider2D p in Physics2D.OverlapCircleAll(transform.position, seekRadius))
 		{
 			inRadius.Add(p.transform.GetComponent<PersonColourControl>());
 		}
