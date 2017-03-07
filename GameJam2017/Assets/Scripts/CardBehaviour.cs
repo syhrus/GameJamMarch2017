@@ -5,16 +5,16 @@ using UnityEngine.UI;
 
 public class CardBehaviour : MonoBehaviour {
 
-	private RectTransform mainCard;
-	private GUIText cardTitle;
-	private Vector2 smallSize;
-	private Vector2 bigSize;
+	public string title; //Card Title - UI Text is set from the actual text object.
+	public string flavorText; //Card Flavor Text - UI Text is set from the actual text object.
+	public List<CardEffects.EffectType> effectTypes; //Can be set in the editor
+	public List<float> effectRadius; //Can be set in the editor - Corresponds to effectType of the same index
+	public List<float> effectStrength; //Can be set in the editor - Corresponds to effectType of the same index
+
+	CardEffects Effects; //Shifted card effects to a custom class to make them easier to call later.
 
 	void Start () {
-		mainCard = transform.GetComponent<RectTransform>();
-		cardTitle = GetComponentInChildren<GUIText>();
-		smallSize = mainCard.rect.size;
-		bigSize = mainCard.rect.size * 2;
+		Effects = new CardEffects (effectTypes, effectRadius, effectStrength);
 	}
 	
 	// Update is called once per frame
@@ -22,12 +22,22 @@ public class CardBehaviour : MonoBehaviour {
 		
 	}
 
-	void OnGUI(){
-		Event e = Event.current;
-		if (mainCard.rect.Contains (e.mousePosition)) {
-			mainCard.sizeDelta = bigSize;
-		} else {
-			mainCard.sizeDelta = smallSize;
+	public void ActivateCard(){
+		StartCoroutine (CastCard());
+	}
+
+	IEnumerator CastCard(){
+		bool waitingForAction = true;
+		while (waitingForAction) {
+			if (Input.GetMouseButtonDown (0)) {
+				//Activate card as location
+			}
+			if (Input.GetMouseButtonDown (1)) {
+				//Cancel Card action
+			}
+			Ray ray = Camera.main.ScreenPointToRay (Input.mousePosition);
+			transform.position = ray.origin;
+			yield return new WaitForEndOfFrame();
 		}
 	}
 }
