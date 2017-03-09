@@ -191,7 +191,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   vocalRadius: 3
-  changepower: 0.01
+  changepower: 0.0125
   changeRate: 0.1
 --- !u!212 &212520855134599028
 SpriteRenderer:
