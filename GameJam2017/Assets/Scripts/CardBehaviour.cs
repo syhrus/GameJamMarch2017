@@ -33,7 +33,9 @@ public class CardBehaviour : MonoBehaviour {
 		waitingForAction = true;
 		while (waitingForAction) {
 			if (Input.GetMouseButton (0)) {
-				//Activate card as location
+                //Activate card as location
+                Effects.ActivateCardEffect(Effects, transform.position);
+                DiscardCard();
 			}
 			if (Input.GetMouseButton (1)) {
 				//Cancel Card action - return to hand
@@ -46,4 +48,12 @@ public class CardBehaviour : MonoBehaviour {
 			yield return new WaitForEndOfFrame();
 		}
 	}
+
+    public void DiscardCard()
+    {
+        PlayerHand hand = GameObject.Find("PlayerHand").GetComponent<PlayerHand>();
+        hand.cards.Remove(this);
+        hand.reorganiseHand = true;
+        Destroy(gameObject);
+    }
 }
