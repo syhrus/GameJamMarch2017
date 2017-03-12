@@ -12,12 +12,16 @@ public class FriendSeek : MonoBehaviour {
 	private int myColour = 0; //will be set to know persons colour 1 if red 2 if not red
 	private int targetColour = 0;
 
+    public float friendWeight = 1;
+    public float enemyWeight = 1;
+
 	// Use this for initialization
 	void Start () {
 		inRadius = new List<PersonColourControl>();
 		meBody = GetComponent<Rigidbody2D> ();
 		meColour = GetComponent<PersonColourControl> ();
 		personMoving = GetComponent<PersonMovement>();
+        
 	}
 	
 	// Update is called once per frame
@@ -31,7 +35,10 @@ public class FriendSeek : MonoBehaviour {
 		//Finds all colliders in a radius and adds them to list
 		foreach( Collider2D p in Physics2D.OverlapCircleAll(transform.position, seekRadius))
 		{
-			inRadius.Add(p.transform.GetComponent<PersonColourControl>());
+            if (p.tag == "Person")
+            {
+                inRadius.Add(p.transform.GetComponent<PersonColourControl>());
+            }
 		}
 		//For each person in range, add colours to them
 		for(int i = 0; i < inRadius.Count; i++)
@@ -46,12 +53,12 @@ public class FriendSeek : MonoBehaviour {
 			if (targetColour != myColour) {//we are different colours
 
 				Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
-				personMoving.dir -= (desiredVel - meBody.velocity);
+				personMoving.dir -= (desiredVel - meBody.velocity) * friendWeight;
 
 			} else {//else we are similar colours
 
 				Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
-				personMoving.dir += (desiredVel - meBody.velocity);
+                personMoving.dir += (desiredVel - meBody.velocity) * enemyWeight;
 
 			}
 		}

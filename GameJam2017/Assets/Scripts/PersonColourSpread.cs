@@ -24,12 +24,15 @@ public class PersonColourSpread : MonoBehaviour {
         while (true) //TODO: Add global "is game running?" variable to check off
         {
             //Finds all colliders in a radius and adds them to list
-            foreach( Collider2D p in Physics2D.OverlapCircleAll(transform.position, vocalRadius))
+            foreach (Collider2D p in Physics2D.OverlapCircleAll(transform.position, vocalRadius))
             {
-                inRadius.Add(p.transform.GetComponent<PersonColourControl>());
+                if (p.tag == "Person")
+                {
+                    inRadius.Add(p.transform.GetComponent<PersonColourControl>());
+                }
             }
             //For each person in range, add colours to them
-            for(int i = 0; i < inRadius.Count; i++)
+            for (int i = 0; i < inRadius.Count; i++)
             {
                 PersonColourControl person = inRadius[i];
                 person.green += thisColours.green * changepower;

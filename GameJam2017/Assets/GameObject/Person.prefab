@@ -59,7 +59,7 @@ GameObject:
   - component: {fileID: 114288968287082432}
   m_Layer: 0
   m_Name: Person
-  m_TagString: Untagged
+  m_TagString: Person
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -179,6 +179,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seekRadius: 5
+  friendWeight: 1.25
+  enemyWeight: 0.25
 --- !u!114 &114889514921519632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -190,9 +192,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09385578803dca84c880b94828b648a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vocalRadius: 3
-  changepower: 0.0125
-  changeRate: 0.1
+  vocalRadius: 3.125
+  changepower: 0.0075
+  changeRate: 0.25
 --- !u!212 &212520855134599028
 SpriteRenderer:
   m_ObjectHideFlags: 1
