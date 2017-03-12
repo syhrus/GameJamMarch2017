@@ -13,6 +13,10 @@ public class PersonColourControl : MonoBehaviour {
     public float borderGreen = 0; 
     public float borderRed = 0;
 
+	//Friend Data
+	public int maxFriends = 5;
+	public int myFriends = 0;
+
     private SpriteRenderer border; //Border Sprite of person
     private SpriteRenderer inner; //Inner Sprite of person
 
@@ -20,6 +24,8 @@ public class PersonColourControl : MonoBehaviour {
         //Get border and inner sprites.
         border = transform.FindChild("Border").GetComponent<SpriteRenderer>();
         inner = transform.FindChild("Inner").GetComponent<SpriteRenderer>();
+
+		myFriends = Random.Range (0, maxFriends);//Sets friend group (used for movement)
     }
 	
 	void Update () {

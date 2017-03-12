@@ -50,15 +50,22 @@ public class FriendSeek : MonoBehaviour {
 				targetColour = 2;
 			}
 
-			if (targetColour != myColour) {//we are different colours
+			if (meColour.myFriends == inRadius [i].myFriends) {
+				if (targetColour != myColour) {//we are different colours
+
+					Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
+					personMoving.dir -= (desiredVel - meBody.velocity);
+
+				} else {//else we are similar colours
+
+					Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
+					personMoving.dir += (desiredVel - meBody.velocity);
+
+				}
+			} else {
 
 				Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
-				personMoving.dir -= (desiredVel - meBody.velocity) * friendWeight;
-
-			} else {//else we are similar colours
-
-				Vector2 desiredVel = (inRadius [i].transform.position - transform.position).normalized * personMoving.maxSpeed;
-                personMoving.dir += (desiredVel - meBody.velocity) * enemyWeight;
+				personMoving.dir -= (desiredVel - meBody.velocity);
 
 			}
 		}
