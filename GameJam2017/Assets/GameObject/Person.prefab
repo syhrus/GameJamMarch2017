@@ -154,8 +154,6 @@ MonoBehaviour:
   red: 0
   borderGreen: 0
   borderRed: 0
-  maxFriends: 5
-  myFriends: 0
 --- !u!114 &114279788821512122
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,7 +178,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 69a56ea55428151479df6da666da4992, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  seekRadius: 2
+  seekRadius: 5
 --- !u!114 &114889514921519632
 MonoBehaviour:
   m_ObjectHideFlags: 1
