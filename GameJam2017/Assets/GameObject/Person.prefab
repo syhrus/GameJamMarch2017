@@ -200,6 +200,7 @@ MonoBehaviour:
   vocalRadius: 5
   changepower: 0.0075
   changeRate: 0.25
+  shieldDecay: 0.01
 --- !u!212 &212520855134599028
 SpriteRenderer:
   m_ObjectHideFlags: 1

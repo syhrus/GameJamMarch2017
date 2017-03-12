@@ -32,11 +32,17 @@ public class PersonColourControl : MonoBehaviour {
         //Border initially removes all other colour's power
         if(borderGreen > 0)
         {
-            red = 0;
+            if (red/2 > borderGreen)
+            {
+                red = borderGreen;
+            }
         }
         if (borderRed > 0)
         {
-            green = 0;
+            if (green/2 > borderGreen)
+            {
+                green = borderRed;
+            }
         }
 
         //clamp colour values so they don't get too large - This also adds a little bit of a decay factor, so that's nice.

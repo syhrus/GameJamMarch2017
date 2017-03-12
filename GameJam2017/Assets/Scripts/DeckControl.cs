@@ -15,9 +15,9 @@ public class DeckControl : MonoBehaviour {
 		while (!selected || i>10) {
 			int rando = Random.Range (0, cards.Count);
 			card = cards [rando];
-			if (card.GetComponent<CardBehaviour>().rarity > seed) {
+			//if (card.GetComponent<CardBehaviour>().rarity > seed) {
 				selected = true;
-			}
+			//}
 			i++;
 		}
 		if(card == null){

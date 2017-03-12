@@ -24,4 +24,20 @@ public class PersonMovement : MonoBehaviour {
 	void FixedUpdate(){
 		me.AddForce (force);
 	}
+
+    public void StartAttractTo(Vector2 location, int repetitions, float weight)
+    {
+        StartCoroutine(AttractTo(location, repetitions, weight));
+    }
+
+    IEnumerator AttractTo(Vector2 location, int repetitions, float weight)
+    {
+        int i = 0;
+        while (i < repetitions)
+        {
+            dir += location - new Vector2(transform.position.x, transform.position.y).normalized * maxSpeed;
+            yield return new WaitForSeconds(0.1f);
+            i++;
+        }
+    }
 }

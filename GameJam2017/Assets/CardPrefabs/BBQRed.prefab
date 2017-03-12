@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114471405418130482}
   - component: {fileID: 114827242561847064}
   m_Layer: 5
-  m_Name: BBQGreen
+  m_Name: BBQRed
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -213,12 +213,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: BBQ
   flavorText: Hold a community BBQ to raise awareness of your cause.
-  effectTypes: 02000000
+  effectTypes: 03000000
   effectRadius:
   - 8
   effectStrength:
   - 0.5
-  rarity: 8
+  rarity: 11
 --- !u!114 &114987307758457196
 MonoBehaviour:
   m_ObjectHideFlags: 1

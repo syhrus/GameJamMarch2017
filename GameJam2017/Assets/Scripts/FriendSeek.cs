@@ -108,8 +108,8 @@ public class FriendSeek : MonoBehaviour {
 
             foreach (Transform t in nearBorders)
             {
-                Vector2 desiredVel = (t.position - transform.position).normalized * personMoving.maxSpeed;
-                personMoving.dir -= (desiredVel - meBody.velocity) * borderWeight;
+                Vector2 desiredVel = (t.up).normalized * personMoving.maxSpeed;
+                personMoving.dir += (desiredVel - meBody.velocity) * borderWeight;
             }
 
             nearBorders.Clear();

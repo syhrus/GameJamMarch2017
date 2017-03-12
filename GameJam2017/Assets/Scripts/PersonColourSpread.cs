@@ -7,6 +7,7 @@ public class PersonColourSpread : MonoBehaviour {
     public float vocalRadius = 0; //Radius of trigger
     public float changepower = 0.01f; //Amount of change per cycle
     public float changeRate = 10; //Tweaker for rate of change
+    public float shieldDecay = 0.001f;
 
     private List<PersonColourControl> inRadius;
     private PersonColourControl thisColours; //To get current colour
@@ -44,6 +45,8 @@ public class PersonColourSpread : MonoBehaviour {
 				thisColours.green *= difference;
 				thisColours.red *= difference;
 			}
+            thisColours.borderGreen -= shieldDecay;
+            thisColours.borderRed -= shieldDecay;
 
             yield return new WaitForSeconds(changeRate);
             inRadius.Clear();

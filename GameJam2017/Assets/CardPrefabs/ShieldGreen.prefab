@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114471405418130482}
   - component: {fileID: 114827242561847064}
   m_Layer: 5
-  m_Name: BBQGreen
+  m_Name: ShieldGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,14 +211,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7b29bc76d83b8d409063e7eb779759c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: BBQ
-  flavorText: Hold a community BBQ to raise awareness of your cause.
-  effectTypes: 02000000
+  title: Shield
+  flavorText: Makes people immune to red in a small radius
+  effectTypes: 00000000
   effectRadius:
-  - 8
-  effectStrength:
   - 0.5
-  rarity: 8
+  effectStrength:
+  - 0.05
+  rarity: 5
 --- !u!114 &114987307758457196
 MonoBehaviour:
   m_ObjectHideFlags: 1

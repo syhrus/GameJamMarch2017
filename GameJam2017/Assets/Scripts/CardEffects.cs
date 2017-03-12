@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class CardEffects {
-	public enum EffectType { Shield, BoostGreen, BoostRed, ReduceGreen, ReduceRed }; //All possible types of card effects to check against
+	public enum EffectType { ShieldGreen, ShieldRed, BoostGreen, BoostRed, ReduceGreen, ReduceRed, AttractGreen, AttractRed }; //All possible types of card effects to check against
 	public List<EffectType> Effects; //Stores all effects a card may have
 	public List<float> EffectStrength; //Stores the strength of each effect.
 	public List<float> EffectRadius; //Stored the radius of each effect.
@@ -42,26 +42,68 @@ public class CardEffects {
 			//Get all people in radius for effect
 			List<PersonColourControl> people = new List<PersonColourControl> ();
 			foreach (Collider2D p in Physics2D.OverlapCircleAll(Location, cardEffects.EffectRadius[i])) {
-				people.Add (p.transform.GetComponent<PersonColourControl> ());
+                if (p.transform.GetComponent<PersonColourControl>())
+                {
+                    people.Add(p.transform.GetComponent<PersonColourControl>());
+                }
 			}
-			switch (cardEffects.Effects [i]) {
-			case EffectType.BoostGreen:
-				//TODO: Add effect
-				break;
-			case EffectType.BoostRed:
-				//TODO: Add effect
-				break;
-			case EffectType.ReduceGreen:
-				//TODO: Add effect
-				break;
-			case EffectType.ReduceRed:
-				//TODO: Add effect
-				break;
-			case EffectType.Shield:
-				//TODO: Add Effect
-				break;
-
-			}
+            switch (cardEffects.Effects[i])
+            {
+                case EffectType.BoostGreen:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.green += EffectStrength[i];
+                    }
+                    break;
+                case EffectType.BoostRed:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.red += EffectStrength[i];
+                    }
+                    break;
+                case EffectType.ReduceGreen:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.green -= EffectStrength[i];
+                    }
+                    break;
+                case EffectType.ReduceRed:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.red -= EffectStrength[i];
+                    }
+                    break;
+                case EffectType.ShieldGreen:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.borderGreen += EffectStrength[i];
+                    }
+                    break;
+                case EffectType.ShieldRed:
+                    foreach (PersonColourControl p in people)
+                    {
+                        p.borderRed += EffectStrength[i];
+                    }
+                    break;
+                case EffectType.AttractGreen:
+                    foreach (PersonColourControl p in people)
+                    {
+                        if (p.green > p.red && Mathf.Abs(p.green - p.red) > 0.125f)
+                        {
+                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 200);
+                        }
+                    }
+                    break;
+                case EffectType.AttractRed:
+                    foreach (PersonColourControl p in people)
+                    {
+                        if (p.green < p.red && Mathf.Abs(p.green - p.red) > 0.125f)
+                        {
+                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 200);
+                        }
+                    }
+                    break;
+            }
 			i++;
 		}
 	}
