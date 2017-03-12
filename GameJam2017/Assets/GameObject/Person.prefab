@@ -154,7 +154,7 @@ MonoBehaviour:
   red: 0
   borderGreen: 0
   borderRed: 0
-  maxFriends: 2
+  maxFriends: 7
   myFriends: 0
 --- !u!114 &114279788821512122
 MonoBehaviour:
@@ -181,8 +181,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seekRadius: 5
-  friendWeight: 1.25
+  friendWeight: 5
+  sameWeight: 1.25
   enemyWeight: 0.25
+  borderWeight: 10
+  flockWeight: 1
 --- !u!114 &114889514921519632
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,7 +197,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09385578803dca84c880b94828b648a8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  vocalRadius: 3.125
+  vocalRadius: 5
   changepower: 0.0075
   changeRate: 0.25
 --- !u!212 &212520855134599028
