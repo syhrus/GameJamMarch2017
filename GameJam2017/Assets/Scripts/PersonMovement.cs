@@ -35,7 +35,7 @@ public class PersonMovement : MonoBehaviour {
         int i = 0;
         while (i < repetitions)
         {
-            dir += location - new Vector2(transform.position.x, transform.position.y).normalized * maxSpeed;
+            dir += (location - new Vector2(transform.position.x, transform.position.y)).normalized * maxSpeed * weight;
             yield return new WaitForSeconds(0.1f);
             i++;
         }

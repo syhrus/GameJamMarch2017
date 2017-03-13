@@ -90,7 +90,7 @@ public class CardEffects {
                     {
                         if (p.green > p.red && Mathf.Abs(p.green - p.red) > 0.125f)
                         {
-                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 200);
+                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 20);
                         }
                     }
                     break;
@@ -99,7 +99,7 @@ public class CardEffects {
                     {
                         if (p.green < p.red && Mathf.Abs(p.green - p.red) > 0.125f)
                         {
-                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 200);
+                            p.transform.GetComponent<PersonMovement>().StartAttractTo(Location, (int)EffectStrength[i], 20);
                         }
                     }
                     break;

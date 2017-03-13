@@ -34,14 +34,14 @@ public class PersonColourControl : MonoBehaviour {
         {
             if (red/2 > borderGreen)
             {
-                red = borderGreen;
+                red -= borderGreen;
             }
         }
         if (borderRed > 0)
         {
             if (green/2 > borderGreen)
             {
-                green = borderRed;
+                green -= borderRed;
             }
         }
 

@@ -33,7 +33,7 @@ public class CardBehaviour : MonoBehaviour {
 		waitingForAction = true;
 		while (waitingForAction) {
 			if (Input.GetMouseButton (0)) {
-                //Activate card as location
+                //Activate card at location
                 Effects.ActivateCardEffect(Effects, transform.position);
                 DiscardCard();
 			}
@@ -52,6 +52,19 @@ public class CardBehaviour : MonoBehaviour {
     public void DiscardCard()
     {
         PlayerHand hand = GameObject.Find("PlayerHand").GetComponent<PlayerHand>();
+        hand.cards.Remove(this);
+        hand.reorganiseHand = true;
+        Destroy(gameObject);
+    }
+
+    public void AIPlayCard(Vector2 pos)
+    {
+        Effects.ActivateCardEffect(Effects, pos);
+    }
+
+    public void DiscardCardAI()
+    {
+        PlayerHand hand = GameObject.Find("EnemyHand").GetComponent<PlayerHand>();
         hand.cards.Remove(this);
         hand.reorganiseHand = true;
         Destroy(gameObject);

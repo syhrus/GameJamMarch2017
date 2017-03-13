@@ -14,7 +14,7 @@ public class TrackScore : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		allPeople = new List<PersonColourControl>();
-		peopleHolder = GameObject.Find ("people");
+		peopleHolder = GameObject.Find ("People");
 		//creates a list of every person in the game
 		foreach (Transform t in peopleHolder.transform) {
 			allPeople.Add(t.GetComponent<PersonColourControl>());

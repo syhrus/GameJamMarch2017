@@ -8,6 +8,7 @@ public class gameTimer : MonoBehaviour {
 	public float drawTime;
 
 	public PlayerHand playersHand;
+    public PlayerHand enemyHand;
 
 	// Use this for initialization
 	void Start () {
@@ -19,7 +20,12 @@ public class gameTimer : MonoBehaviour {
 		playersHand.DrawNewCard();
 		playersHand.DrawNewCard();
 		playersHand.DrawNewCard();
-	}
+        enemyHand.DrawNewCard();
+        enemyHand.DrawNewCard();
+        enemyHand.DrawNewCard();
+        enemyHand.DrawNewCard();
+        enemyHand.DrawNewCard();
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -29,8 +35,10 @@ public class gameTimer : MonoBehaviour {
             if (playersHand.cards.Count < playersHand.maxhand)
             {
                 playersHand.DrawNewCard();
+                enemyHand.DrawNewCard();
+
             }
-			drawTime = 0;
+            drawTime = 0;
 		}
 	}
 }
