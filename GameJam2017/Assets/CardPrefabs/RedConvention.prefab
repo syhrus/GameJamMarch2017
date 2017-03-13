@@ -213,14 +213,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   title: Convention
   flavorText: Hold a convention to bring your people together
-  effectTypes: 0100000007000000
+  effectTypes: 010000000700000003000000
   effectRadius:
   - 1
   - 100
+  - 4
   effectStrength:
   - 1
   - 100
-  rarity: 5
+  - 0.75
+  rarity: 3
 --- !u!114 &114987307758457196
 MonoBehaviour:
   m_ObjectHideFlags: 1

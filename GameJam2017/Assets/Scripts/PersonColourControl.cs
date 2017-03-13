@@ -32,14 +32,14 @@ public class PersonColourControl : MonoBehaviour {
         //Border initially removes all other colour's power
         if(borderGreen > 0)
         {
-            if (red/2 > borderGreen)
+            if (red > borderGreen)
             {
                 red -= borderGreen;
             }
         }
         if (borderRed > 0)
         {
-            if (green/2 > borderGreen)
+            if (green > borderGreen)
             {
                 green -= borderRed;
             }
@@ -53,6 +53,8 @@ public class PersonColourControl : MonoBehaviour {
         }
         grey = 0.5f - red/2 - green/2;
 
+        red = Mathf.Clamp01(red);
+        green = Mathf.Clamp01(green);
         borderGreen = Mathf.Clamp01(borderGreen);
         borderRed = Mathf.Clamp01(borderRed);
 

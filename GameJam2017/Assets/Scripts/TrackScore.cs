@@ -12,8 +12,8 @@ public class TrackScore : MonoBehaviour {
 	private List<PersonColourControl> allPeople;
 	private GameObject peopleHolder;
 
-	public GUIText gameOverText;
-	public GUIText restartText;
+	public string gameOverText;
+	public string restartText;
 
 
 	public bool gameOver;
@@ -31,8 +31,8 @@ public class TrackScore : MonoBehaviour {
 		gameOver = false;
 		restart = false;
 
-		gameOverText.text = "";
-		restartText.text = "";
+		gameOverText = "";
+		restartText = "";
 
 		StartCoroutine (ScoreGet ());
 	}
@@ -40,7 +40,7 @@ public class TrackScore : MonoBehaviour {
 	void Update(){
 
 		if (gameOver) {
-			restartText.text = "'R'estart";
+			restartText = "'R'estart";
 			restart = true;
 		}
 
@@ -71,13 +71,13 @@ public class TrackScore : MonoBehaviour {
 			redScore = countRed;
 			if (redScore == 0) {
 				//win game code goes here
-				gameOverText.text ="You have one welcome to your new Utopia.";
+				gameOverText ="You have won welcome to your new Utopia.";
 				gameOver = true;
 			}
 			greenScore = countGreen;
 			if (greenScore == 0) {
 				//lose game code goes here
-				gameOverText.text ="The Fascists have won. Flee to Canada?";
+				gameOverText ="The Fascists have won. Flee to Canada?";
 				gameOver = true;
 			}
 			countRed = 0;

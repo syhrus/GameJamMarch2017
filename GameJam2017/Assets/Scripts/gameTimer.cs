@@ -31,7 +31,7 @@ public class gameTimer : MonoBehaviour {
 	void Update () {
 		gameTime += Time.deltaTime;
 		drawTime += Time.deltaTime;
-		if (drawTime > 15.0f) {
+		if (drawTime > 10.0f) {
             if (playersHand.cards.Count < playersHand.maxhand)
             {
                 playersHand.DrawNewCard();
