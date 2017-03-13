@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TrackScore : MonoBehaviour {
 
@@ -11,6 +12,13 @@ public class TrackScore : MonoBehaviour {
 	private List<PersonColourControl> allPeople;
 	private GameObject peopleHolder;
 
+	public GUIText gameOverText;
+	public GUIText restartText;
+
+
+	public bool gameOver;
+	private bool restart;
+
 	// Use this for initialization
 	void Start () {
 		allPeople = new List<PersonColourControl>();
@@ -20,13 +28,37 @@ public class TrackScore : MonoBehaviour {
 			allPeople.Add(t.GetComponent<PersonColourControl>());
 		}
 
+		gameOver = false;
+		restart = false;
+
+		gameOverText.text = "";
+		restartText.text = "";
+
 		StartCoroutine (ScoreGet ());
 	}
+
+	void Update(){
+
+		if (gameOver) {
+			restartText.text = "'R'estart";
+			restart = true;
+		}
+
+		if (restart) {
+			if (Input.GetKeyDown (KeyCode.R)) {
+				Scene scene = SceneManager.GetActiveScene ();
+				SceneManager.LoadScene (scene.name);
+			}
+				
+		}
+
+	}
+
 	
 	// coroutine called every 5 seconds
 	IEnumerator ScoreGet () {
 
-		while (true) {
+		while (!gameOver) {
 
 			for (int i = 0; i < allPeople.Count; i++) {
 				if (allPeople [i].red > allPeople [i].green) {//if red increase red score
@@ -39,10 +71,14 @@ public class TrackScore : MonoBehaviour {
 			redScore = countRed;
 			if (redScore == 0) {
 				//win game code goes here
+				gameOverText.text ="You have one welcome to your new Utopia.";
+				gameOver = true;
 			}
 			greenScore = countGreen;
 			if (greenScore == 0) {
 				//lose game code goes here
+				gameOverText.text ="The Fascists have won. Flee to Canada?";
+				gameOver = true;
 			}
 			countRed = 0;
 			countGreen = 0;
